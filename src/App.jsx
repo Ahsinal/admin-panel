@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage";
 import { useState } from "react";
 import SideNav from "./components/SideNav";
 import Analytics from "./pages/Analytics";
+import Sales from "./pages/Sales";
 
 function App() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<Homepage isNavbarOpen={isNavbarOpen}/>} />
         <Route path="/analytics" element={<Analytics isNavbarOpen={isNavbarOpen}/>} />
+        <Route path="/sales" element={<Sales isNavbarOpen={isNavbarOpen}/>} />
       </Routes>
       </div>
       </div>

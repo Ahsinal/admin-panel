@@ -18,12 +18,14 @@ import {
 } from "@mui/icons-material";
 import { Table } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SideNav = ({ isSidenavOpen }) => {
-  const [selectedLink, setSelectedLink] = useState("");
-  const handleSelected = (item) => {
-    setSelectedLink(item);
+  const navigate = useNavigate();
+  const [selectedLink, setSelectedLink] = useState("home");
+  const handleSelected = (name, path) => {
+    setSelectedLink(name); // Updates the selected link state
+    navigate(path); // Navigates to the specified path
   };
   return (
     <div
@@ -39,28 +41,35 @@ const SideNav = ({ isSidenavOpen }) => {
       <ul className="space-y-4 mb-4 px-2">
         <h1 className="text-white text-lg font-normal">Dashboard</h1>
         <li
-          onClick={() => handleSelected("home")}
-          className={`flex items-center px-3 py-2 space-x-2 text-white cursor-pointer rounded-lg ${
+          onClick={() => handleSelected("home", "/home")}
+          className={`flex items-center px-3 py-1 space-x-2 text-white cursor-pointer rounded-lg ${
             selectedLink === "home"
               ? "bg-teal-100 text-primary-500"
               : "hover:text-teal-200"
           }`}
         >
           <LineStyle />
-          <Link to="/home">Home</Link>
+          <span>Home</span>
         </li>
         <li
-          onClick={() => handleSelected("analytics")}
-          className={`flex items-center px-3 py-2 space-x-2 text-white cursor-pointer rounded-lg ${
+          onClick={() => handleSelected("analytics", "/analytics")}
+          className={`flex items-center px-3 py-1 space-x-2 text-white cursor-pointer rounded-lg ${
             selectedLink === "analytics"
               ? "bg-teal-100 text-primary-500"
               : "hover:text-teal-200"
           }`}
         >
           <Timeline />
-          <Link to="/analytics">Analytics</Link>
+          <span>Analytics</span>
         </li>
-        <li className="flex items-center px-1 space-x-2 text-white hover:text-teal-200 cursor-pointer">
+        <li
+          onClick={() => handleSelected("sales", "/sales")}
+          className={`flex items-center px-3 py-1 space-x-2 text-white cursor-pointer rounded-lg ${
+            selectedLink === "sales"
+              ? "bg-teal-100 text-primary-500"
+              : "hover:text-teal-200"
+          }`}
+        >
           <TrendingUp />
           <Link to="/">Sales</Link>
         </li>
