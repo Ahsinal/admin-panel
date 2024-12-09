@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  AdminPanelSettingsOutlined,
   DarkMode,
   Language,
   NotificationAdd,
@@ -8,19 +9,19 @@ import {
   NotificationsActiveIcon,
   Settings,
 } from "@mui/icons-material";
-const Topbar = ({onNavbarToggle}) => {
+const Topbar = ({ onNavbarToggle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
-    onNavbarToggle(isOpen)//// Pass state to parent (Homepage)
+    onNavbarToggle(isOpen); //// Pass state to parent (Homepage)
   };
 
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const navbarRef = useRef(null);
   // Detect scroll to determine when navbar should stick
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 100) {
+      if (window.scrollY >= 80) {
         setIsScrolled(true); // When scrolled more than 50px
       } else {
         setIsScrolled(false); // Reset when at top
@@ -33,34 +34,43 @@ const Topbar = ({onNavbarToggle}) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
- 
+
   return (
     <>
       {/* Main Navbar */}
       <div
-        className={`bg-gradient-to-r from-slate-400 to-slate-200 transition-transform bg-opacity-100 duration-500 ease-in-out ${
+        className={`bg-gradient-to-r from-primary-500 to-primary-400 transition-transform bg-opacity-100 duration-500 ease-in-out ${
           isScrolled ? "transform translate-y-0 sticky top-0 z-10" : ""
         }`}
       >
-        <div className="container mx-auto  flex items-center justify-between px-4 lg:py-4 px-0">
-          <div className="text-lg font-bold">ADMIN DASHBOARD</div>
+        <div className=" mx-4  flex items-center justify-between   lg:py-4 ">
+          <div className="flex items-center text-white  space-x-2">
+            <AdminPanelSettingsOutlined />
+            <Link to="/" className="text-lg font-bold  relative group">
+              ADMIN DASHBOARD
+              <span className="absolute  left-0 bottom-0 w-0 h-[3px]  bg-gradient-to-r from-slate-500 to-white rounded transition-all duration-300 group-hover:w-full ">
+                {" "}
+              </span>
+            </Link>
+          </div>
+
           {/* Right Section  Menu for large screens) */}
           <div className="hidden ml-auto md:flex items-center space-x-6 ">
-            <Link to="/" className=" text-gray-700 hover:text-gray-900">
+            <Link to="/" className=" text-white hover:text-teal-200">
               <DarkMode className="text-2xl" />
             </Link>
-            <Link to="/" className=" text-gray-700 hover:text-gray-900">
+            <Link to="/" className=" text-white hover:text-teal-200">
               <Language className="text-2xl" />
             </Link>
-            <Link to="/" className=" text-gray-700 hover:text-gray-900">
+            <Link to="/" className=" text-white hover:text-teal-200">
               <Settings className="text-2xl" />
             </Link>
             <Link
               to="/"
-              className="flex items-center relative text-gray-700 hover:text-gray-900"
+              className="flex items-center relative text-white hover:text-teal-200"
             >
               <NotificationImportant className="text-2xl" />
-              <span className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transform translate-x-3 -translate-y-2">
+              <span className="absolute top-0 right-0 bg-red-500 text-teal-200 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transform translate-x-3 -translate-y-2">
                 2
               </span>
             </Link>
