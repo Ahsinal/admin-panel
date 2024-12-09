@@ -5,6 +5,7 @@ import "./index.css";
 import Homepage from "./pages/Homepage";
 import { useState } from "react";
 import SideNav from "./components/SideNav";
+import Analytics from "./pages/Analytics";
 
 function App() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -15,17 +16,18 @@ function App() {
   };
   const [navbarHeight, setNavbarHeight] = useState(0);
   const[isSidenavOpen,SetIsSidenavOpen]=useState(0);
-  const handleSideNav=(state)=>{
-    isSidenavOpen(state)
-  }
+  const handleSideNav = () => {
+    SetIsSidenavOpen((prev) => !prev);
+  };
   return (
     <Router>
       <Topbar onNavbarToggle={handleNavbarToggle} setNavbarHeight={setNavbarHeight}/>
-      <div className=" flex  justify-between">
+      <div className=" flex  ">
       <SideNav isSidenavOpen={isSidenavOpen} />
-      <div className="bg-red-50">
+      <div className="bg-red-50 w-full">
       <Routes>
-        <Route path="/" element={<Homepage isNavbarOpen={isNavbarOpen}  navbarHeight={navbarHeight}/>} />
+        <Route path="/home" element={<Homepage isNavbarOpen={isNavbarOpen}/>} />
+        <Route path="/analytics" element={<Analytics isNavbarOpen={isNavbarOpen}/>} />
       </Routes>
       </div>
       </div>

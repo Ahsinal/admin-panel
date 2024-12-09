@@ -127,7 +127,7 @@ const Topbar = ({ onNavbarToggle }) => {
 
           {/* Mobile Dropdown Menu */}
           {isOpen && (
-            <div className="md:hidden fixed top-12 left-0 right-0 bg-gradient-to-r from-slate-400 to-slate-200 shadow-md z-10 flex flex-col items-start space-y-2 p-4">
+            <div className="transition-all duration-600 md:hidden fixed top-12 left-0 right-0 bg-gradient-to-r from-slate-400 to-slate-200 shadow-md z-10 flex flex-col items-start space-y-2 p-4">
               {["Home", "About", "Profile"].map((item) => (
                 <Link
                   key={item}

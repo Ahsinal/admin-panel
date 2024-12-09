@@ -1,11 +1,11 @@
 import React from "react";
 
-const Homepage = ({ isNavbarOpen }) => {
+const Analytics = ({ isNavbarOpen }) => {
   return (
     <div className={`transition-all duration-500 ${isNavbarOpen ? "pt-0":"pt-52"} `}>
-      Homepage
+      Analytics
     </div>
   );
 };
 
-export default Homepage;
+export default Analytics;
