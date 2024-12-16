@@ -13,7 +13,7 @@ const WidgetSm = () => {
         : typeLower === "rejected"
         ? "bg-red-500   text-white"
         : "bg-gray-500 text-white";
-    return <div className={ `min-w-20 inline-block px-4 py-1 rounded-md text-sm font-semibold transition duration-200 ${btnColor}`}>{type}</div>;
+    return <div className={ `min-w-24 inline-block px-4 py-1 rounded-md text-sm font-semibold transition duration-200 ${btnColor}`}>{type}</div>;
   };
   return (
     <div className="flex  justify-between  space-x-4">
