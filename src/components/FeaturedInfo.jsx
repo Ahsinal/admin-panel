@@ -3,8 +3,8 @@ import React from "react";
 
 const FeaturedInfo = () => {
   return ( 
-    <div className="flex flex-wrap  p-6  gap-6">
-      <div className="bg-slate-100 p-4 shadow-lg w-1/3 sm:w-1/2 md:w-1/4">
+    <div className="flex flex-wrap   gap-6">
+      <div className="bg-slate-50 p-4 shadow-lg w-1/3 sm:w-1/2 md:w-1/4">
         <h1 className="font-semibold text-lg text-gray-900">Revenue</h1>
         <div className="flex items-center space-x-2">
           <h1 className="text-4xl font-bold text-gray-800">$2,415</h1>

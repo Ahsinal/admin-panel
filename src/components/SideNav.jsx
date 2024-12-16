@@ -42,10 +42,10 @@ const SideNav = ({ isSidenavOpen }) => {
         <h1 className="text-white text-lg font-normal">Dashboard</h1>
         <li
           onClick={() => handleSelected("home", "/home")}
-          className={`flex items-center px-3 py-1 space-x-2 text-white cursor-pointer rounded-lg ${
+          className={`flex items-center px-3 py-1 space-x-2 text-gray-800 cursor-pointer rounded-lg ${
             selectedLink === "home"
               ? "bg-teal-100 text-primary-500"
-              : "hover:text-teal-200"
+              : " text-white hover:text-teal-200 "
           }`}
         >
           <LineStyle />
@@ -53,10 +53,10 @@ const SideNav = ({ isSidenavOpen }) => {
         </li>
         <li
           onClick={() => handleSelected("analytics", "/analytics")}
-          className={`flex items-center px-3 py-1 space-x-2 text-white cursor-pointer rounded-lg ${
+          className={`flex items-center px-3 py-1 space-x-2 text-gray-800 cursor-pointer rounded-lg ${
             selectedLink === "analytics"
               ? "bg-teal-100 text-primary-500"
-              : "hover:text-teal-200"
+              : "text-white hover:text-teal-200 "
           }`}
         >
           <Timeline />
@@ -64,10 +64,10 @@ const SideNav = ({ isSidenavOpen }) => {
         </li>
         <li
           onClick={() => handleSelected("sales", "/sales")}
-          className={`flex items-center px-3 py-1 space-x-2 text-white cursor-pointer rounded-lg ${
+          className={`flex items-center px-3 py-1 space-x-2 text-gray-800 cursor-pointer rounded-lg ${
             selectedLink === "sales"
               ? "bg-teal-100 text-primary-500"
-              : "hover:text-teal-200"
+              : "text-white hover:text-teal-200"
           }`}
         >
           <TrendingUp />

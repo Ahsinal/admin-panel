@@ -1,5 +1,4 @@
 import Topbar from "./components/Topbar";
-import ReactDOM from "react-dom";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./index.css";
 import Homepage from "./pages/Homepage";
@@ -25,7 +24,7 @@ function App() {
       <Topbar onNavbarToggle={handleNavbarToggle} setNavbarHeight={setNavbarHeight}/>
       <div className=" flex  ">
       <SideNav isSidenavOpen={isSidenavOpen} />
-      <div className="bg-red-50 w-full">
+      <div className=" w-full">
       <Routes>
         <Route path="/home" element={<Homepage isNavbarOpen={isNavbarOpen}/>} />
         <Route path="/analytics" element={<Analytics isNavbarOpen={isNavbarOpen}/>} />

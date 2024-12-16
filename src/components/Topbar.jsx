@@ -43,8 +43,8 @@ const Topbar = ({ onNavbarToggle }) => {
           isScrolled ? "transform translate-y-0 sticky top-0 z-10" : ""
         }`}
       >
-        <div className=" mx-4  flex items-center justify-between   lg:py-4 ">
-          <div className="flex items-center text-white  space-x-2">
+        <div className=" mx-4  flex items-center justify-between space-x-8  lg:py-4 ">
+          <div className="flex items-center text-white  space-x-2 ">
             <AdminPanelSettingsOutlined />
             <Link to="/" className="text-lg font-bold  relative group">
               ADMIN DASHBOARD
@@ -55,34 +55,35 @@ const Topbar = ({ onNavbarToggle }) => {
           </div>
 
           {/* Right Section  Menu for large screens) */}
-          <div className="hidden ml-auto md:flex items-center space-x-6 ">
-            <Link to="/" className=" text-white hover:text-teal-200">
-              <DarkMode className="text-2xl" />
-            </Link>
-            <Link to="/" className=" text-white hover:text-teal-200">
-              <Language className="text-2xl" />
-            </Link>
-            <Link to="/" className=" text-white hover:text-teal-200">
-              <Settings className="text-2xl" />
-            </Link>
-            <Link
-              to="/"
-              className="flex items-center relative text-white hover:text-teal-200"
-            >
-              <NotificationImportant className="text-2xl" />
-              <span className="absolute top-0 right-0 bg-red-500 text-teal-200 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transform translate-x-3 -translate-y-2">
-                2
-              </span>
-            </Link>
-            {/* Avatar */}
-            <Link to="/profile">
-              <img
-                src="https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3396.jpg?semt=ais_hybrid"
-                alt="avatar"
-                className="w-12 h-12 rounded-full overflow-hidden"
-              />
-            </Link>
-          </div>
+            <div className="hidden ml-auto md:flex items-center space-x-6 ">
+              <h1 className="text-white text-xl">Welcome User Name !</h1>
+              <Link to="/" className=" text-white hover:text-teal-200">
+                <DarkMode className="text-2xl" />
+              </Link>
+              <Link to="/" className=" text-white hover:text-teal-200">
+                <Language className="text-2xl" />
+              </Link>
+              <Link to="/" className=" text-white hover:text-teal-200">
+                <Settings className="text-2xl" />
+              </Link>
+              <Link
+                to="/"
+                className="flex items-center relative text-white hover:text-teal-200"
+              >
+                <NotificationImportant className="text-2xl" />
+                <span className="absolute top-0 right-0 bg-red-500 text-teal-200 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transform translate-x-3 -translate-y-2">
+                  2
+                </span>
+              </Link>
+              {/* Avatar */}
+              <Link to="/profile">
+                <img
+                  src="https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3396.jpg?semt=ais_hybrid"
+                  alt="avatar"
+                  className="w-12 h-12 rounded-full overflow-hidden"
+                />
+              </Link>
+            </div>
 
           {/* Mobile Menu Button (Hamburger/close) */}
           <div className="py-4  md:hidden mx-2 flex items-center">
