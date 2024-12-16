@@ -1,7 +1,8 @@
 import React from "react";
 import FeaturedInfo from "../components/FeaturedInfo";
 import Chart from "../components/Chart";
-
+import { userData } from "../assets/data/Chartdata";
+import WidgetSm from "../components/WidgetSm";
 
 const Homepage = ({ isNavbarOpen }) => {
   return (
@@ -14,7 +15,9 @@ const Homepage = ({ isNavbarOpen }) => {
         <FeaturedInfo />
       </div>
       
-      <Chart />
+      <Chart data={userData} title="User Analytics" grid datakey="Active Users"/>
+
+      <WidgetSm/>
     </section>
   );
 };
