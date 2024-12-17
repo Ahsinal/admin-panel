@@ -1,91 +1,73 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DeleteOutline, Edit } from "@mui/icons-material";
+import { userRows } from "../assets/data/userData";
+import { Link } from "react-router-dom";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
-  { field: "fullName", headerName: "Full Name", width: 150, editable: true },
   {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 110,
-    editable: true,
+    field: "user",
+    headerName: "User",
+    width: 250,
+    renderCell: (params) => {
+      return (
+        <div className="flex items-center space-x-4">
+          <img
+            src={params.row.avatar}
+            alt="avatar"
+            className="w-8 h-8 items-center rounded-full"
+          />
+          <p>{params.row.user}</p>
+        </div>
+      );
+    },
   },
   {
     field: "email",
     headerName: "Email",
     type: "email",
     width: 160,
-    editable: true,
-  },
-  {
-    field: "avatar",
-    headerName: "Image",
-    width: 150,
-    editable: false,
-    renderCell: (params) => {
-      return (
-        <img
-          src={params.row.avatar}
-          alt="avatar"
-          className="w-10 h-10 items-center rounded-full"
-        />
-      );
-    },
   },
   {
     field: "status",
     headerName: "Status",
     width: 110,
-    editable: true,
     renderCell: (params) => {
-      const status =  params.value ? params.value.toLowerCase() : "null "; // default to 'unknown' if undefined
+      const status = params.value ? params.value.toLowerCase() : "null "; // default to 'unknown' if undefined
       const statusClass =
         status === "active"
-          ? " bg-green-500 text-white "
+          ? " text-green-500  "
           : status === "blocked"
-          ? "bg-red-500 text-white"
+          ? "text-red-500 "
           : " text-gray-700";
-      return (
-        <span
-          className={` w-40   items-center rounded-full px-2 py-1 ${statusClass}`}
-        >
-          {status}
-        </span>
-      );
+      return <button className={`  ${statusClass}`}>{status}</button>;
     },
   },
   {
     field: "transaction",
     headerName: "Transaction",
-    type: "number",
     width: 110,
-    editable: true,
   },
-];
-
-const rows = [
   {
-    id: 1,
-    fullName: "Snow Jon",
-    age: 14,
-    email: "xyz@gmail.com",
-    avatar:
-      "https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3396.jpg?semt=ais_hybrid",
-    status: "active",
-    transaction: "13300 $",
+    field: "action",
+    headerName: "Action",
+    type: "number",
+    width: 150,
+    renderCell: (params) => {
+      return (
+        <div className="flex items-center justify-center space-x-2">
+          <Link to={'/user/'+params.row.id}>
+            <button>
+              <Edit className="text-green-600 cursor-pointer" />
+            </button>
+          </Link>
+          <DeleteOutline className="text-red-600 cursor-pointer" />
+        </div>
+      );
+    },
   },
-  { id: 2, fullName: "Lannister Cersei", age: 31, email: "xyz@gmail.com",
-  avatar:
-    "https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3396.jpg?semt=ais_hybrid",
-  status: "blocked",
-  transaction: "13300 $", },
-  { id: 3, fullName: "Lannister Jaime", age: 31, email: "xyz@gmail.com" },
-  { id: 4, fullName: "Stark Arya", age: 11, email: "xyz@gmail.com" },
-  { id: 5, fullName: "Targaryen Daenerys", age: null, email: "xyz@gmail.com" },
-  { id: 6, fullName: "Melisandre ull", age: 150, email: "xyz@gmail.com" },
-  { id: 7, fullName: "Clifford Ferrara", age: 44, email: "xyz@gmail.com" },
 ];
 
 const UserList = () => {
@@ -96,7 +78,7 @@ const UserList = () => {
       </h1>
       <Box className="container mx-auto">
         <DataGrid
-          rows={rows}
+          rows={userRows}
           columns={columns}
           initialState={{
             pagination: {
