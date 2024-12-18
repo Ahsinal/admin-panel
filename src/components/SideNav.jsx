@@ -1,22 +1,16 @@
 import {
   CurrencyBitcoin,
   Feedback,
-  GraphicEq,
-  Home,
   LineStyle,
   Mail,
   ManageAccounts,
   MessageRounded,
   Person,
-  PrivacyTip,
   ProductionQuantityLimits,
   Report,
-  Security,
   Timeline,
   TrendingUp,
-  UsbRounded,
 } from "@mui/icons-material";
-import { Table } from "@mui/material";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -41,9 +35,9 @@ const SideNav = ({ isSidenavOpen }) => {
       <ul className="space-y-4 mb-4 px-2">
         <h1 className="text-white text-lg font-normal">Dashboard</h1>
         <li
-          onClick={() => handleSelected("/", "/")}
+          onClick={() => handleSelected("home", "/")}
           className={`flex items-center px-3 py-1 space-x-2 text-gray-800 cursor-pointer rounded-lg ${
-            selectedLink === ""
+            selectedLink === "home"
               ? "bg-teal-100 text-primary-500"
               : " text-white hover:text-teal-200 "
           }`}
@@ -86,9 +80,16 @@ const SideNav = ({ isSidenavOpen }) => {
           }`}
         >
           <Person />
-          <Link to="/users">User</Link>
+          <Link to="/users">Users</Link>
         </li>
-        <li className="flex items-center px-1 space-x-2 text-white hover:text-teal-200 cursor-pointer">
+        <li
+          onClick={() => handleSelected("products", "/products")}
+          className={`flex items-center px-3 py-1 space-x-2 cursor-pointer rounded-lg ${
+            selectedLink === "products"
+              ? "bg-teal-100 text-primary-500"
+              : "text-white hover:text-teal-200"
+          }`}
+        >
           <ProductionQuantityLimits />
           <Link to="/">Products</Link>
         </li>
