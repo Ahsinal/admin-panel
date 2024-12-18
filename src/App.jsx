@@ -9,6 +9,7 @@ import Sales from "./pages/Sales";
 import UserList from "./pages/UserList";
 import User from "./pages/User";
 import NotFound from "./pages/NotFound";
+import NewUser from "./pages/NewUser";
 
 function App() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -51,6 +52,10 @@ function App() {
             <Route
               path="/user/:id"
               element={<User isNavbarOpen={isNavbarOpen} />}
+            />
+            <Route
+              path="/user/new"
+              element={<NewUser isNavbarOpen={isNavbarOpen} />}
             />
             {/* Fallback route for unmatched routes */}
             <Route path="/notfound" element={<NotFound />} />

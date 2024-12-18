@@ -98,9 +98,9 @@ const UserList = () => {
     <section className=" p-6">
       <div className="flex items-center justify-between my-4">
         <h1 className="text-lg   my-3 ">Active Users</h1>
-        <button className="bg-teal-600 px-5 py-2 rounded-md text-white outline-none  hover:bg-teal-700">
+        <Link to='/user/new' className="bg-teal-600 px-5 py-2 rounded-md text-white outline-none  hover:bg-teal-700">
           Create
-        </button>
+        </Link>
       </div>
       <Box className="container mx-auto">
         <DataGrid
