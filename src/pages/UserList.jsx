@@ -82,9 +82,14 @@ const UserList = () => {
   };
   return (
     <section className=" p-6">
-      <h1 className="text-lg px-4 py-2  my-3 text-white  w-auto bg-green-600 inline-block">
-        Active Users
-      </h1>
+      <div className="flex items-center justify-between my-4">
+        <h1 className="text-lg   my-3 ">
+          Active Users
+        </h1>
+        <button className="bg-teal-600 px-5 py-2 rounded-md text-white outline-none  hover:bg-teal-700">
+          Create
+        </button>
+      </div>
       <Box className="container mx-auto">
         <DataGrid
           rows={data}
