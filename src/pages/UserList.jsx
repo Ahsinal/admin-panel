@@ -4,11 +4,25 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { DeleteOutline, Edit } from "@mui/icons-material";
 import { userRows } from "../assets/data/userData";
 import { Link } from "react-router-dom";
-
+import Modal from "../components/Modal";
 const UserList = () => {
   const [data, setData] = useState(userRows);
+  const [delteData, setDeletedata] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
   const handleDeleteUser = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    setModalOpen(true);
+    setDeletedata(id);
+  };
+  //confirm delete action
+  const confirmDelete = () => {
+    setData(data.filter((item) => item.id !== delteData));
+    setModalOpen(false);
+    setDeletedata(null);
+  };
+  //discard delete in modal
+  const discardDelete = () => {
+    setModalOpen(false);
+    setDeletedata(null);
   };
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
@@ -83,9 +97,7 @@ const UserList = () => {
   return (
     <section className=" p-6">
       <div className="flex items-center justify-between my-4">
-        <h1 className="text-lg   my-3 ">
-          Active Users
-        </h1>
+        <h1 className="text-lg   my-3 ">Active Users</h1>
         <button className="bg-teal-600 px-5 py-2 rounded-md text-white outline-none  hover:bg-teal-700">
           Create
         </button>
@@ -118,6 +130,16 @@ const UserList = () => {
           disableRowSelectionOnClick
         ></DataGrid>
       </Box>
+      {/* Modal */}
+      {isModalOpen && (
+        <Modal
+          isOpen={isModalOpen}
+          title="Confirm Delete"
+          message="Are you sure you want to permanently delete this task? This action cannot be undone."
+          onConfirm={confirmDelete}
+          onCancel={discardDelete}
+        />
+      )}
     </section>
   );
 };
