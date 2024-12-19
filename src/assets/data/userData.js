@@ -36,3 +36,30 @@ export const userRows = [
     { id: 6, user: "Melisandre ull", age: 150, email: "xyz@gmail.com" },
     { id: 7, user: "Clifford Ferrara", age: 44, email: "xyz@gmail.com" },
 ];
+export const productRows = [
+    {
+        id: 1,
+        pname: "Snow ",
+        price: "14 $",
+        manufactureDate: "July 2022",
+        pimg:
+            "https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3396.jpg?semt=ais_hybrid",
+    },
+    {
+        id: 2,
+        pname: "Snooon",
+        price: "14 $",
+        manufactureDate: "July 2022",
+        pimg:
+            "https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3396.jpg?semt=ais_hybrid",
+    },
+    {
+        id: 3,
+        pname: "potato",
+        price: "14 $",
+        manufactureDate: "July 2022",
+        pimg:
+            "https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3396.jpg?semt=ais_hybrid",
+    },
+
+];

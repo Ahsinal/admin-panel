@@ -5,7 +5,7 @@ import { DeleteOutline, Edit } from "@mui/icons-material";
 import { userRows } from "../assets/data/userData";
 import { Link } from "react-router-dom";
 import Modal from "../components/Modal";
-const UserList = ({users}) => {
+const UserList = () => {
   const [data, setData] = useState(userRows);
   const [delteData, setDeletedata] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -95,7 +95,7 @@ const UserList = ({users}) => {
     event.stopPropagation();
   };
   return (
-    <section className=" p-6">
+    <section className=" p-12">
       <div className="flex items-center justify-between my-4">
         <h1 className="text-lg   my-3 ">Active Users</h1>
         <Link to='/user/new' className="bg-teal-600 px-5 py-2 rounded-md text-white outline-none  hover:bg-teal-700">
