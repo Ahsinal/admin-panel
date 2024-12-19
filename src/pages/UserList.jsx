@@ -5,7 +5,7 @@ import { DeleteOutline, Edit } from "@mui/icons-material";
 import { userRows } from "../assets/data/userData";
 import { Link } from "react-router-dom";
 import Modal from "../components/Modal";
-const UserList = () => {
+const UserList = ({users}) => {
   const [data, setData] = useState(userRows);
   const [delteData, setDeletedata] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
