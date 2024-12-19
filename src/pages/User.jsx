@@ -191,6 +191,8 @@ const User = () => {
                   type="text"
                   name="contactNumber"
                   value={userData.contactNumber}
+                  onChange={handleChange}
+                  disabled={!isEditable}
                   placeholder="999999999"
                   className={`w-5/6 h-8 p-1 border text-gray-600 ${
                     isEditable
@@ -210,6 +212,7 @@ const User = () => {
                   name="address"
                   value={userData.address}
                   onChange={handleChange}
+                  disabled={!isEditable}
                   placeholder="Street B | Villa Road,Washington"
                   className={`w-5/6 h-8 p-1 border text-gray-600 ${
                     isEditable

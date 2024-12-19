@@ -1,32 +1,29 @@
-import { Box } from "@mui/material";
+import { useState } from "react";
+import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { productRows } from "../assets/data/userData";
 import { DeleteOutline, Edit } from "@mui/icons-material";
+import { productRows, userRows } from "../assets/data/userData";
+import { Link } from "react-router-dom";
 import Modal from "../components/Modal";
-
-const ProductList = () => {
+const UserList = () => {
   const [data, setData] = useState(productRows);
-  const [deleteData, setDeleteData] = useState(false);
+  const [delteData, setDeletedata] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
-
   const handleDeleteProduct = (id) => {
     setModalOpen(true);
-    setDeleteData(id);
+    setDeletedata(id);
   };
-
+  //confirm delete action
   const confirmDelete = () => {
-    setData(data.filter((item) => item.id !== deleteData.id));
+    setData(data.filter((item) => item.id !== delteData));
     setModalOpen(false);
-    setDeleteData(null);
+    setDeletedata(null);
   };
-
+  //discard delete in modal
   const discardDelete = () => {
     setModalOpen(false);
-    setDeleteData(null);
+    setDeletedata(null);
   };
-
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
@@ -52,7 +49,7 @@ const ProductList = () => {
       width: 150,
       renderCell: (params) => (
         <div className="flex items-center justify-center space-x-2">
-          <Link to={"/user/" + params.row.id}>
+          <Link to={"/product/" + params.row.id}>
             <Edit className="text-green-600 cursor-pointer outline-none" />
           </Link>
           <DeleteOutline
@@ -63,20 +60,19 @@ const ProductList = () => {
       ),
     },
   ];
-
   const handleCellClick = (params, event) => {
+    // Prevent the default row selection behavior
     event.stopPropagation();
   };
-
   return (
-    <section className="p-12">
+    <section className=" p-12">
       <div className="flex items-center justify-between my-4">
-        <h1 className="text-lg my-3">Product List</h1>
+        <h1 className="text-lg   my-3 ">Active Users</h1>
         <Link
           to="/product/new"
-          className="bg-teal-600 px-5 py-2 rounded-md text-white outline-none hover:bg-teal-700"
+          className="bg-teal-600 px-5 py-2 rounded-md text-white outline-none  hover:bg-teal-700"
         >
-          Add Product
+          Create
         </Link>
       </div>
       <Box className="container mx-auto">
@@ -86,13 +82,13 @@ const ProductList = () => {
           onCellClick={handleCellClick}
           sx={{
             ".MuiDataGrid-cell:focus": {
-              outline: "none",
+              outline: "none", // Removes focus outline
             },
             ".MuiDataGrid-row.Mui-selected": {
-              backgroundColor: "transparent",
+              backgroundColor: "transparent", // Removes row selection background
             },
             ".MuiDataGrid-row:hover": {
-              backgroundColor: "rgba(0, 0, 0, 0.04)",
+              backgroundColor: "rgba(0, 0, 0, 0.04)", // Keeps row hover effect
             },
           }}
           initialState={{
@@ -105,13 +101,14 @@ const ProductList = () => {
           pageSizeOptions={[5]}
           checkboxSelection
           disableRowSelectionOnClick
-        />
+        ></DataGrid>
       </Box>
+      {/* Modal */}
       {isModalOpen && (
         <Modal
-          isModalOpen={isModalOpen}
+          isOpen={isModalOpen}
           title="Confirm Delete"
-          message="Are you sure you want to permanently delete this product? This action cannot be undone."
+          message="Are you sure you want to permanently delete this task? This action cannot be undone."
           onConfirm={confirmDelete}
           onCancel={discardDelete}
         />
@@ -120,4 +117,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default UserList;
